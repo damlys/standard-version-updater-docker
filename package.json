@@ -1,0 +1,47 @@
+{
+  "name": "@damlys/standard-version-updater-docker",
+  "version": "0.0.0",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "",
+  "keywords": [
+    "conventional-changelog",
+    "standard-version",
+    "standard-version-updater",
+    "updater"
+  ],
+  "author": "Damian Łysiak",
+  "contributors": [],
+  "license": "UNLICENSE",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/damlys/standard-version-updater-docker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/damlys/standard-version-updater-docker/issues"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "dist/docker-compose.js",
+  "types": "dist/docker-compose.d.ts",
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=5.6.0"
+  },
+  "devDependencies": {
+    "@damlys/ts-sdk": "^1.0.1"
+  },
+  "scripts": {
+    "build": "rm -rf ./dist && tsc",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint './**/*.{ts,tsx}' --fix",
+    "lint:check": "eslint './**/*.{ts,tsx}'",
+    "test": "jest --verbose",
+    "test:coverage": "rm -rf ./coverage && jest --coverage",
+    "test:watch": "jest --watchAll"
+  }
+}
