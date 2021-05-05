@@ -73,11 +73,17 @@ services:
   service0:
     image: image0:\${VERSION:-1.2.3}
     build: ./dir
+  service1:
+    image: image1:\${VERSION:-1.2.3}
+    build: ./dir
 `;
   output = `version: "3.8"
 services:
   service0:
     image: image0:\${VERSION:-1.2.4-rc.1}
+    build: ./dir
+  service1:
+    image: image1:\${VERSION:-1.2.4-rc.1}
     build: ./dir
 `;
   expect(writeVersion(input, "1.2.4-rc.1")).toBe(output);

@@ -55,9 +55,11 @@ test("should writeVersion", (): void => {
   let output: string = "";
 
   input = `FROM node
+ARG VERSION="1.2.3"
 ENV VERSION="1.2.3"
 WORKDIR /app`;
   output = `FROM node
+ARG VERSION="1.2.4-rc.1"
 ENV VERSION="1.2.4-rc.1"
 WORKDIR /app`;
   expect(writeVersion(input, "1.2.4-rc.1")).toBe(output);
