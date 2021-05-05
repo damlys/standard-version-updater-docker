@@ -51,5 +51,14 @@ WORKDIR /app`;
 });
 
 test("should writeVersion", (): void => {
-  expect(writeVersion("", "")).toBe("ENV VERSION=0.0.0");
+  let input: string = "";
+  let output: string = "";
+
+  input = `FROM node
+ENV VERSION="1.2.3"
+WORKDIR /app`;
+  output = `FROM node
+ENV VERSION="1.2.4-rc.1"
+WORKDIR /app`;
+  expect(writeVersion(input, "1.2.4-rc.1")).toBe(output);
 });

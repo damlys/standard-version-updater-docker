@@ -1,5 +1,6 @@
+const regex: RegExp = /\sVERSION=["']?([a-zA-Z0-9\-_.]*)["']?/;
+
 export function readVersion(contents: string): string {
-  const regex: RegExp = /\sVERSION=["']?([a-zA-Z0-9\-_.]*)["']?/;
   const found: RegExpMatchArray | null = contents.match(regex);
   if (found === null) {
     throw new Error("VERSION is not present.");
@@ -11,5 +12,6 @@ export function readVersion(contents: string): string {
 }
 
 export function writeVersion(contents: string, version: string): string {
-  return "ENV VERSION=0.0.0";
+  const newContents: string = contents.replace(regex, ` VERSION="${version}"`);
+  return newContents;
 }
