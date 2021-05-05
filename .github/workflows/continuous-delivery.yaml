@@ -41,9 +41,9 @@ jobs:
         run: npm run lint:check
       - name: Run code tests
         run: npm run test
-#      - if: github.event_name == 'push'
-#        name: Publish package
-#        run: npm publish
-#      - if: github.event_name == 'push'
-#        name: Publish version
-#        run: git push && git push --tags
+      - if: github.event_name == 'push'
+        name: Publish package
+        run: npm publish
+      - if: github.event_name == 'push'
+        name: Publish version
+        run: git push && git push --tags
