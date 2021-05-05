@@ -1,5 +1,13 @@
 export function readVersion(contents: string): string {
-  return "0.0.0";
+  const regex: RegExp = /\sVERSION=["']?([a-zA-Z0-9\-_.]*)["']?/;
+  const found: RegExpMatchArray | null = contents.match(regex);
+  if (found === null) {
+    throw new Error("VERSION is not present.");
+  }
+  if (typeof found[1] === "undefined" || found[1] === "") {
+    throw new Error("VERSION is empty.");
+  }
+  return found[1];
 }
 
 export function writeVersion(contents: string, version: string): string {
