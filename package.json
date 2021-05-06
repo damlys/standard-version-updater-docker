@@ -1,11 +1,11 @@
 {
   "name": "@damlys/standard-version-updater-docker",
-  "version": "0.0.2",
+  "version": "1.0.0-0",
   "private": false,
   "publishConfig": {
     "access": "public"
   },
-  "description": "",
+  "description": "The conventional-changelog/standard-version updater for Docker Compose and Dockerfile files.",
   "keywords": [
     "conventional-changelog",
     "standard-version",

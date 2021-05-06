@@ -1,7 +1,7 @@
 import "jest";
 import { readVersion, writeVersion } from "../src/dockerfile";
 
-test("should readVersion", (): void => {
+test("readVersion", (): void => {
   let input: string = "";
 
   input = `FROM node
@@ -50,17 +50,19 @@ WORKDIR /app`;
   expect((): string => readVersion(input)).toThrow(new Error("VERSION is not present."));
 });
 
-test("should writeVersion", (): void => {
+test("writeVersion", (): void => {
   let input: string = "";
   let output: string = "";
 
   input = `FROM node
 ARG VERSION="1.2.3"
-ENV VERSION="1.2.3"
+ENV VERSION="4.5.6"
+ENV FOO_VERSION="7.8.9"
 WORKDIR /app`;
   output = `FROM node
 ARG VERSION="1.2.4-rc.1"
 ENV VERSION="1.2.4-rc.1"
+ENV FOO_VERSION="7.8.9"
 WORKDIR /app`;
   expect(writeVersion(input, "1.2.4-rc.1")).toBe(output);
 });

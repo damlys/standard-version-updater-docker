@@ -1,12 +1,19 @@
 # `standard-version-updater-docker`
 
-Installation
+The
+[conventional-changelog/standard-version](https://github.com/conventional-changelog/standard-version)
+updater for Dockerfile and Docker Compose files.
+
+## Installation
 
 ```shell
 $ npm install --save-dev @damlys/standard-version-updater-docker
 ```
 
-`.versionrc.json` file
+## Configuration
+
+Just use following updaters within
+`.versionrc.json` config file.
 
 ```json
 {
@@ -23,7 +30,9 @@ $ npm install --save-dev @damlys/standard-version-updater-docker
 }
 ```
 
-`Dockerfile` file
+## Examples
+
+`Dockerfile` file might look like that:
 
 ```Dockerfile
 FROM node
@@ -32,15 +41,23 @@ ENV VERSION="1.0.0"
 WORKDIR /app
 ```
 
-`docker-compose.yml` file
+The `dockerfile.js` updater looks for
+a ` VERSION="<semver>"` pattern and updates it.
+
+~
+
+`docker-compose.yml` file might look like that:
 
 ```yaml
 version: "3.8"
 services:
   service0:
     image: image0:${VERSION:-1.0.0}
-    build: ./dir1
+    build: ./dir0
   service1:
     image: image1:${VERSION:-1.0.0}
-    build: ./dir2
+    build: ./dir1
 ```
+
+The `docker-compose.js` updater looks for
+a `${VERSION:-<semver>}` pattern and updates it.
